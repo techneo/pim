@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4>Contact Detail</h4>
+<div>	
+	<div>
+		<strong>Name</strong> : {{contact_id.name}}
+	</div>
+	<div>
+		<strong>Email</strong> : {{contact_id.email}}
+	</div>
+	<div>
+		<strong>Phone</strong> : {{contact_id.phone}}
+	</div>
+	<a href="{% url 'index' %}">Cancel</a> | <a href="{% url 'update' contact_id.id %}">Update</a>
+</div>
+{% endblock %}

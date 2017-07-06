@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4>Contact List</h4>
+<div>	
+	<a href="{% url 'create' %}">Create New</a>
+	<ol>
+		{% for contact in contact_list %}	
+			<li><a href="{% url 'detail' contact.id %}">{{contact.name}}</a> | <a href="{% url 'update' contact.id %}">Update</a> | <a href="{% url 'delete' contact.id %}">Delete</a></li>
+		{% endfor %}
+	</ol>
+</div>
+{% endblock %}

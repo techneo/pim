@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h4>Contact Form</h4>
+<div>	
+	<form action="." method="post">{% csrf_token %} 
+		<div>
+			<label>Name:</label>
+			<input	type="text" name="name" value="{{contact_id.name|default_if_none:''}}" required />
+		</div>
+		<div>
+			<label>Email:</label>
+			<input	type="email" name="email" value="{{contact_id.email|default_if_none:''}}" required/>
+		</div>
+		<div>
+			<label>Phone Number:</label>
+			<input	type="number" name="phone" value="{{contact_id.phone|default_if_none:''}}" required/>
+		</div>
+		<div>
+			<button type="submit">Save</button> | <a href="{% url 'index' %}">Cancel</a>
+		</div>	
+	</form>
+</div>
+{% endblock %}
