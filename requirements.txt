@@ -1,6 +1,7 @@
 Django==1.9.5
 et-xmlfile==1.0.1
+gunicorn==19.7.1
 jdcal==1.2
 openpyxl==2.3.5
+psycopg2==2.7.3
 xlwt==1.0.0
-gunicorn

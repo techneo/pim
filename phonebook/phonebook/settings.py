@@ -56,12 +56,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'phonebook.wsgi.application'
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pim_db',
+        'USER': 'pim_user',
+        'PASSWORD': 'test1234',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
+
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
