@@ -1,4 +1,5 @@
 import os
+import platform 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -6,7 +7,7 @@ SECRET_KEY = '1-+wn3(i_j(+@f3u35v+4wg=zesn1opz#b1oav77f-+vge1!#o'
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['http://172.17.0.2:9100']
+ALLOWED_HOSTS = ['http://127.0.0.1:9000']
 
 SITE_URL = []
 
@@ -17,10 +18,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework'
 ]
 
 PROJECT_APPS = [
     'apps.contact',
+    'apps.helloapi',
 ]
 
 INSTALLED_APPS = INSTALLED_APPS + PROJECT_APPS
@@ -56,14 +59,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'phonebook.wsgi.application'
 
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+status = platform.system()
 
-DATABASES = {
+if 'Windows' in status:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
+else :
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'pim_db',
@@ -71,9 +84,8 @@ DATABASES = {
         'PASSWORD': 'test1234',
         'HOST': 'localhost',
         'PORT': '',
+        }
     }
-}
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
